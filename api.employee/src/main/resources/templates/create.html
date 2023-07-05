@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Employee Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+</head>
+<style>
+body{
+    background-color: skyblue;
+}
+.outer{
+	margin-left:30%;
+    padding: 20px;
+}
+.container,.heading{
+	background-color: navy;
+	width:50%;
+	border: 2px;
+	color:white;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+}
+input{
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+}
+button{
+	background-color: green; 
+	
+}
+button:hover {
+	background-color:white;
+}
+
+</style>
+<body ng-app="myApp">
+
+<div class="outer">
+  <h1 class="heading">Employee Form</h1>
+
+  <div class="container">
+  	<form name="employee" ng-submit="employeeRecord()" ng-controller="Employee">
+    <div class="id">
+    <label for="empId">ID:</label>
+    <input type="text" name="id" id="empId" ng-model="employee.id" required>
+    </div>
+    <br>
+    <div class="name">
+    <label for="empName">Name:</label>
+    <input type="text" name="name" id="empName" ng-model="employee.name" required>
+    </div>
+    <br>
+    <div class="fathername">
+    <label for="empFatherName">Father's Name:</label>
+    <input type="text" name="fatherName" id="empFatherName" ng-model="employee.fatherName" required>
+    </div>
+    <br>
+    <div class="dob">
+    <label for="empDOB">Date of Birth:</label>
+    <input type="date" name="dateOfBirth" id="empDOB" ng-model="employee.dateOfBirth" required>
+    </div>
+    <br>
+    <div class="mobile">
+    <label for="empMobile">Mobile Number:</label>
+    <input type="tel" id="empMobile" name="mobileNumber" ng-model="employee.mobileNumber" required>
+    </div>
+    <br>
+    <div class="button"><button id="submit" type="submit">SUBMIT</button></div>
+    
+  </form>
+  </div>
+</div>
+
+
+<script>
+
+angular.module('myApp')
+.config(function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'employee/create.html',
+      controller: 'Employee'
+    });
+});
+
+var app=angular.module('myApp', []);
+app.controller('Employee',function ($scope, $http) {
+  $scope.recordofEmployee = {};
+
+  $scope.employeeRecord = function () {
+    $http.post('/add', $scope.recordofEmployee)
+      .then(function (response) {
+    	  var cleanedData = removeCircularReferences(response.data);
+          console.log(JSON.stringify(cleanedData));
+      })
+      .catch(function (error) {
+        console.error('Error saving employee data', error);
+        
+      });
+  };
+});
+
+function removeCircularReferences(obj) {
+	  var cache = [];
+	  var cleanedObj = JSON.stringify(obj, function(key, value) {
+	    if (typeof value === 'object' && value !== null) {
+	      if (cache.indexOf(value) !== -1) {
+	        // Circular reference found, remove the reference
+	        return;
+	      }
+	      // Store the object in cache
+	      cache.push(value);
+	    }
+	    return value;
+	  });
+	  cache = null; // Clear cache for garbage collection
+	  return JSON.parse(cleanedObj);
+	}
+
+</script>
+</body>
+</html>
+

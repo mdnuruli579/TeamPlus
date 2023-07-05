@@ -1,0 +1,28 @@
+body{
+    background-color: skyblue;
+}
+.outer{
+	margin-left:30%;
+    padding: 20px;
+}
+.container,.heading{
+	background-color: navy;
+	width:50%;
+	border: 2px;
+	color:white;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+}
+input{
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+}
+button{
+	background-color: green; 
+	
+}
+button:hover {
+	background-color:white;
+}
