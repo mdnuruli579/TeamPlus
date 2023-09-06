@@ -1,0 +1,28 @@
+<div ng-controller="Employee">
+<h1>List of Employee</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Mobile Number</th>
+            <th>Date of Birth</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeate="employee in employees">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.fatherName}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.dob}}</td>
+            <td><button ng-click="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 10px;">Update</button>
+                <button ng-click="deleteEmployee(employee.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                <button ng-click="getEmployeeById(employee.id)" class="btn btn-info" style="margin-left: 10px;">View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
