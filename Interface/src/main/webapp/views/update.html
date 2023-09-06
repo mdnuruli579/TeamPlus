@@ -1,0 +1,38 @@
+<div class="container" class="col-md-6" >
+    <h1>Updation Form</h1>
+    <form name="employee" method="post" ng-controller="UpdateEmployee" ng-submit="updateEmployee()">
+      <div class="mb-3">
+        <label for="empid" class="form-label">Id</label>
+        <input class="form-control" type="text" name="id" id="empid" ng-model="update.id" disabled autocomplete="on" value="{{update.id}}">
+      </div>
+      <div class="mb-3">
+        <label for="empName" class="form-label">Name</label>
+        <input class="form-control" type="text" name="name" id="empName" ng-model="update.name" required placeholder="Enter your name" autocomplete="on" value="{{update.name}}">
+      </div>
+      <div class="mb-3">
+        <label for="empfatherName" class="form-label">Father's Name</label>
+        <input class="form-control" type="text" name="fatherName" id="empfatherName" ng-model="update.fatherName" required placeholder="Enter your father's name" autocomplete="on" value="{{update.fatherName}}">
+      </div>
+      <div class="mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number</label>
+        <input class="form-control" type="tel" id="mobileNumber" name="mobileNumber" ng-model="update.mobile" required placeholder="Enter your mobile number" autocomplete="on" value="{{update.mobile}}">
+      </div>
+      <div class="mb-3">
+        <label for="empDOB" class="form-label">Date of Birth</label>
+        <input class="form-control" type="date" name="dateOfBirth" id="empDOB" ng-model="update.dob" required value="{{update.dob}}" pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))">
+      </div>
+      <div class="mb-3">
+        <label for="empCity" class="form-label">City</label>
+        <input class="form-control" type="text" name="city" id="empCity" ng-model="update.city" required placeholder="Enter your City" autocomplete="on" value="{{update.city}}">
+      </div>
+      <div class="mb-3">
+        <label for="empemail" class="form-label">Email</label>
+        <input class="form-control" type="text" name="email" id="empemail" ng-model="update.email" required placeholder="Enter your Email" autocomplete="on" value="{{update.email}}">
+      </div>
+      <div class="mb-3">
+        <label for="empsalary" class="form-label">Salary</label>
+        <input class="form-control" type="text" name="salary" id="empsalary" ng-model="update.salary" required placeholder="Enter Salary" autocomplete="on" value="{{update.salary}}">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>

@@ -1,0 +1,31 @@
+<div ng-controller="Employee">
+<span><b>List of Employee</b></span>
+<input type="text" placeholder="Search.." name="search" style="margin-left:0px">
+<button ng-click="" id="btnheader">Search</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Mobile Number</th>
+            <th>Date of Birth</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees track by $index">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.fatherName}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.dob}}</td>
+            <td>
+            	<a href='#!update/{{employee.id}}'><button class="btn btn-info" style="margin-left: 10px;">Update</button></a>
+                <button ng-click="deleteEmployee(employee.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                <a href='#!details/{{employee.id}}'><button class="btn btn-info"  style="margin-left: 10px;">View</button></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
